@@ -5,31 +5,32 @@
 # Build Matrix
 #
 matrix:
-   arch:
-      - amd64
-      - arm64
-    os: linux
-    dist: bionic
-    language: c
+   include: 
+   - os: linux
+     arch: amd64
+   - os: linux
+     arch: arm64
+     dist: bionic
+     language: c
 
-    git:
-      - depth: 1
+     git:
+       - depth: 1
 
-    compiler: gcc
-    env: DESC="linux/gcc build and test"
+     compiler: gcc
+     env: DESC="linux/gcc build and test"
 
-    addons:
-      apt:
-        packages:
-          - build-essential
-          - cmake
-          - net-tools
-          - python-pip
-          - python-setuptools
-          - python3-pip
-          - python3-setuptools
-          - valgrind
-          - psmisc
+     addons:
+       apt:
+         packages:
+           - build-essential
+           - cmake
+           - net-tools
+           - python-pip
+           - python-setuptools
+           - python3-pip
+           - python3-setuptools
+           - valgrind
+           - psmisc
 
     before_script:
       - cd ${TRAVIS_BUILD_DIR}
@@ -95,48 +96,46 @@ matrix:
           ;;
         esac
 
-    arch:
-      - amd64
-      - arm64
-    os: linux
-    dist: bionic
-    language: c
-    compiler: gcc
-    env: COVERITY_SCAN=true
-    git:
-      - depth: 1
+    include:
+    - os: linux
+      arch: amd64
+    - os: linux
+      arch: arm64
+      dist: bionic
+      language: c
+      compiler: gcc
+      env: COVERITY_SCAN=true
+      git:
+         - depth: 1
 
-    script:
-      - echo "this job is for coverity scan"
+      script:
+         - echo "this job is for coverity scan"
 
-    addons:
-      coverity_scan:
-        # GitHub project metadata
-        # ** specific to your project **
-        project:
-          name: TDengine
-          version: 2.x
-          description: TDengine
+      addons:
+         coverity_scan:
+           # GitHub project metadata
+           # ** specific to your project **
+           project:
+            name: TDengine
+            version: 2.x
+            description: TDengine
 
-        # Where email notification of build analysis results will be sent
-        notification_email: sdsang@taosdata.com, slguan@taosdata.com
+         # Where email notification of build analysis results will be sent
+         notification_email: sdsang@taosdata.com, slguan@taosdata.com
 
-        # Commands to prepare for build_command
-        # ** likely specific to your build **
-        build_command_prepend: cmake . > /dev/null
+         # Commands to prepare for build_command
+         # ** likely specific to your build **
+         build_command_prepend: cmake . > /dev/null
 
-        # The command that will be added as an argument to "cov-build" to compile your project for analysis,
-        # ** likely specific to your build **
-        build_command: make
+          # The command that will be added as an argument to "cov-build" to compile your project for analysis,
+         # ** likely specific to your build **
+          build_command: make
 
         # Pattern to match selecting branches that will run analysis. We recommend leaving this set to 'coverity_scan'.
         # Take care in resource usage, and consider the build frequency allowances per
         #   https://scan.coverity.com/faq#frequency
-        branch_pattern: coverity_scan
+         branch_pattern: coverity_scan
 
-    arch:
-      - amd64
-      - arm64
     os: linux
     dist: bionic
     language: c
@@ -223,9 +222,6 @@ matrix:
           ;;
         esac
 
-    arch:
-      - amd64
-      - arm64
     os: linux
     dist: trusty
     language: c
@@ -249,9 +245,6 @@ matrix:
       - cmake .. > /dev/null
       - make > /dev/null
 
-    arch:
-      - amd64
-      - arm64
     os: linux
     dist: bionic
     language: c
