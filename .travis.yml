@@ -5,7 +5,10 @@
 # Build Matrix
 #
 matrix:
-  - os: linux
+  - arch:
+      - amd64
+      - arm64
+    os: linux
     dist: bionic
     language: c
 
@@ -92,7 +95,10 @@ matrix:
           ;;
         esac
 
-  - os: linux
+  - arch:
+      - amd64
+      - arm64
+    os: linux
     dist: bionic
     language: c
     compiler: gcc
@@ -128,7 +134,10 @@ matrix:
         #   https://scan.coverity.com/faq#frequency
         branch_pattern: coverity_scan
 
-  - os: linux
+  - arch:
+      - amd64
+      - arm64
+    os: linux
     dist: bionic
     language: c
     compiler: gcc
@@ -214,7 +223,10 @@ matrix:
           ;;
         esac
 
-  - os: linux
+  - arch:
+      - amd64
+      - arm64
+    os: linux
     dist: trusty
     language: c
     git:
@@ -237,7 +249,10 @@ matrix:
       - cmake .. > /dev/null
       - make > /dev/null
 
-  - os: linux
+  - arch:
+      - amd64
+      - arm64
+    os: linux
     dist: bionic
     language: c
     compiler: clang
