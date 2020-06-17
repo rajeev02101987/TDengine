@@ -4,9 +4,6 @@
 #
 # Build Matrix
 #
-- arch:
-    - amd64
-    - arm64
     matrix:
         os: linux    
 
