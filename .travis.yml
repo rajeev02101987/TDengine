@@ -5,7 +5,7 @@
 # Build Matrix
 #
 matrix:
-  - arch:
+   arch:
       - amd64
       - arm64
     os: linux
@@ -95,7 +95,7 @@ matrix:
           ;;
         esac
 
-  - arch:
+    arch:
       - amd64
       - arm64
     os: linux
@@ -134,7 +134,7 @@ matrix:
         #   https://scan.coverity.com/faq#frequency
         branch_pattern: coverity_scan
 
-  - arch:
+    arch:
       - amd64
       - arm64
     os: linux
@@ -223,7 +223,7 @@ matrix:
           ;;
         esac
 
-  - arch:
+    arch:
       - amd64
       - arm64
     os: linux
@@ -249,7 +249,7 @@ matrix:
       - cmake .. > /dev/null
       - make > /dev/null
 
-  - arch:
+    arch:
       - amd64
       - arm64
     os: linux
